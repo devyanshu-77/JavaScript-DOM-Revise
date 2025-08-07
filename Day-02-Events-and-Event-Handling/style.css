@@ -1,0 +1,39 @@
+/* 🔧 Reset and Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  background-color: #000;
+  color: #fff;
+  padding: 20px;
+}
+
+/* 🎨 Custom Utility */
+.highlight {
+  color: blue;
+}
+
+/* 🔲 Hide actual file input */
+.hidden-file-input {
+  display: none;
+}
+
+/* 📁 Upload Button Styling */
+.file-upload-btn {
+  width: 120px;
+  padding: 10px 14px;
+  border-radius: 4px;
+  background-color: #149314;
+  cursor: pointer;
+  margin-top: 10px;
+}
+.file-upload-btn:hover {
+  background-color: #2eb02e;
+}
