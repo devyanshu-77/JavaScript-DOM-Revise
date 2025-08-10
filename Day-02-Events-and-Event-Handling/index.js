@@ -1,70 +1,155 @@
-// ===============================
 // DOM EVENTS DEMO
-// ===============================
 
-// 1️⃣ DOUBLE-CLICK EVENT: Change heading color
-const heading = document.querySelector(".main-heading");
+// 1️⃣ DOUBLE-CLICK EVENT — Changes heading color
+const heading = document.querySelector(".heading-double-click");
 
-function changeColor() {
+function changeHeadingColor() {
   heading.style.color = "red";
 }
-
-// Add double-click event listener to heading
-heading.addEventListener("dblclick", changeColor);
-
-// ❌ You can remove it later using:
-// heading.removeEventListener("dblclick", changeColor);
+heading.addEventListener("dblclick", changeHeadingColor);
 
 // --------------------------------------------------
 
-// 2️⃣ INPUT EVENT: Triggers as user types in input
-const inputBox = document.querySelector(".text-input");
-
-inputBox.addEventListener("input", function (event) {
-  console.log("Typed:", event.data);
-  // You can do live search, validation, etc. here
+// 2️⃣ INPUT EVENT — Runs live while typing in the text box
+const textInput = document.querySelector(".live-text-input");
+textInput.addEventListener("input", (event) => {
+  console.log("Typed:", event.data); // Example usage: live search, validation
 });
 
 // --------------------------------------------------
 
-// 3️⃣ CHANGE EVENT: Triggered when dropdown selection changes
-const dropdown = document.querySelector(".device-select");
-const deviceLabel = document.querySelector(".selected-device");
+// 3️⃣ CHANGE EVENT — Updates device label when dropdown changes
+const deviceSelect = document.querySelector(".device-dropdown");
+const deviceLabel = document.querySelector(".selected-device-text");
 
-dropdown.addEventListener("change", function (event) {
-  const selected = event.target.value;
-  deviceLabel.textContent = `Device selected: ${selected}`;
+deviceSelect.addEventListener("change", (event) => {
+  deviceLabel.textContent = `Device selected: ${event.target.value}`;
 });
 
 // --------------------------------------------------
 
-// 4️⃣ KEYDOWN EVENT: Fires on key press anywhere on the page
-const keyDisplay = document.querySelector(".key-display");
+// 4️⃣ KEYDOWN EVENT — Detects any key press on the page
+const keyDisplay = document.querySelector(".key-display-text");
 
 window.addEventListener("keydown", (event) => {
-  // console.log(event); // For debugging: shows the full key event object
-
   if (event.code === "Space") {
     keyDisplay.textContent = "Spacebar pressed";
     return;
   }
-
   keyDisplay.textContent = `You pressed: ${event.key}`;
 });
 
 // --------------------------------------------------
 
-// 5️⃣ CLICK + FILE UPLOAD: Fake button triggers hidden file input
-const hiddenFileInput = document.querySelector(".hidden-file-input");
-const uploadBtn = document.querySelector(".file-upload-btn");
+// 5️⃣ CLICK + FILE UPLOAD — Custom button triggers hidden file input
+const fileInput = document.querySelector(".hidden-file-input");
+const fileUploadBtn = document.querySelector(".file-upload-button");
 
-// When the styled button is clicked, trigger the hidden input
-uploadBtn.addEventListener("click", () => {
-  hiddenFileInput.click();
+// Open file picker
+fileUploadBtn.addEventListener("click", () => {
+  fileInput.click();
 });
 
-// Show selected file name on button
-hiddenFileInput.addEventListener("change", (event) => {
+// Display chosen file name
+fileInput.addEventListener("change", (event) => {
   const fileName = event.target.files[0]?.name;
-  uploadBtn.textContent = fileName || "Upload File";
+  fileUploadBtn.textContent = fileName || "Upload File";
+});
+
+// --------------------------------------------------
+
+// 6️⃣ FORM SUBMISSION — Creates a new profile card
+const profileContainer = document.querySelector(".form-container");
+const profileForm = document.querySelector(".profile-form");
+const formInputs = document.querySelectorAll(".profile-form input");
+
+profileForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+
+  // Create card
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  // Profile section
+  const profileSection = document.createElement("div");
+  profileSection.classList.add("profile");
+  card.appendChild(profileSection);
+
+  const profileImg = document.createElement("img");
+  profileImg.setAttribute("src", formInputs[0].value);
+  profileSection.appendChild(profileImg);
+
+  const profileName = document.createElement("p");
+  profileName.textContent = formInputs[1].value;
+  profileSection.appendChild(profileName);
+
+  // Occupation
+  const occupationText = document.createElement("p");
+  occupationText.classList.add("occupation");
+  occupationText.textContent = formInputs[2].value;
+  card.appendChild(occupationText);
+
+  // Description
+  const descriptionText = document.createElement("p");
+  descriptionText.textContent = formInputs[3].value;
+  card.appendChild(descriptionText);
+
+  // Append card to container
+  profileContainer.appendChild(card);
+});
+
+// --------------------------------------------------
+
+// 7️⃣ MOUSE EVENTS — Change div color on hover
+const colorBox = document.querySelector(".hover-color-box");
+
+colorBox.addEventListener("mouseover", () => {
+  colorBox.style.backgroundColor = "yellow";
+});
+colorBox.addEventListener("mouseout", () => {
+  colorBox.style.backgroundColor = "red";
+});
+
+// --------------------------------------------------
+
+// 8️⃣ CUSTOM CURSOR — Follow mouse movement
+const customCursor = document.querySelector(".custom-cursor");
+
+window.addEventListener("mousemove", (e) => {
+  customCursor.style.top = `${e.y}px`;
+  customCursor.style.left = `${e.x}px`;
+});
+
+// --------------------------------------------------
+
+// 9️⃣ EVENT BUBBLING & CAPTURING DEMO
+const parentDiv = document.querySelector(".parent-div");
+const childDiv = document.querySelector(".child-div");
+const grandChildDiv = document.querySelector(".grandchild-div");
+
+parentDiv.addEventListener(
+  "click",
+  () => {
+    console.log("Parent Div Clicked!");
+  },
+  true // Capturing phase
+);
+
+childDiv.addEventListener("click", () => {
+  console.log("Child Div Clicked!");
+});
+
+grandChildDiv.addEventListener("click", () => {
+  console.log("Grand Child Div Clicked!");
+});
+
+// --------------------------------------------------
+
+// 🔟 EVENT DELEGATION — Toggle strike-through on list items
+const fruitList = document.querySelector(".fruit-list");
+
+fruitList.addEventListener("click", (e) => {
+  if (e.target.tagName === "LI") {
+    e.target.classList.toggle("remove");
+  }
 });
