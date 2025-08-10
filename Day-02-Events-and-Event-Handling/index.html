@@ -1,42 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Events and Event Handling in JS</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Events and Event Handling in JS</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    
+    <!-- Double-click event: Changes heading color -->
+    <h1 class="heading-double-click">Double-click to change my color!</h1>
 
-  <!-- 🟥 Double Click to Change Color -->
-  <h1 class="main-heading">Double-click to change my color!</h1>
+    <!-- Input event: Displays live typed text -->
+    <input 
+      class="live-text-input" 
+      type="text" 
+      placeholder="Type something..."
+    />
 
-  <!-- 🟩 Input Event -->
-  <input class="text-input" type="text" placeholder="Type something..." />
+    <!-- Change event: Select device from dropdown -->
+    <div>
+      <h3 class="selected-device-text">Select your device</h3>
+      <select class="device-dropdown">
+        <option selected disabled>Choose Your Device</option>
+        <option value="samsung">Samsung</option>
+        <option value="mi">MI</option>
+        <option value="xiaomi">Xiaomi</option>
+        <option value="apple">Apple</option>
+        <option value="oppo">Oppo</option>
+      </select>
+    </div>
 
-  <!-- 🟦 Change Event on Dropdown -->
-  <div>
-    <h3 class="selected-device">Select your device</h3>
-    <select class="device-select">
-      <option selected disabled>Choose Your Device</option>
-      <option value="samsung">Samsung</option>
-      <option value="mi">MI</option>
-      <option value="xiomi">Xiomi</option>
-      <option value="apple">Apple</option>
-      <option value="oppo">Oppo</option>
-    </select>
-  </div>
+    <!-- Keydown event: Shows pressed key -->
+    <h3 class="key-display-text">Press a key</h3>
 
-  <!-- 🟨 Keydown Event -->
-  <h3 class="key-display">Press a key</h3>
+    <!-- File upload click event: Custom button triggers hidden input -->
+    <div>
+      <input class="hidden-file-input" type="file" />
+      <div class="file-upload-button">Upload File</div>
+    </div>
 
-  <!-- 🟪 File Upload Click Event -->
-  <div>
-    <input class="hidden-file-input" type="file" />
-    <div class="file-upload-btn">Upload File</div>
-  </div>
+    <!-- Form submission event: Adds a new profile card -->
+    <div class="form-container">
+      <form class="profile-form">
+        <input type="text" placeholder="Image URL" />
+        <input type="text" placeholder="Name" />
+        <input type="text" placeholder="Occupation" />
+        <input type="text" placeholder="Description" />
+        <input type="submit" value="Add Profile" />
+      </form>
+    </div>
 
-  <!-- ✅ Main Script -->
-  <script src="index.js"></script>
-</body>
+    <!-- Mouseover color change -->
+    <div class="hover-color-box"></div>
+
+    <!-- Custom cursor -->
+    <div class="custom-cursor"></div>
+
+    <!-- Event bubbling and capturing example -->
+    <div class="parent-div">
+      <h2>Hi, I am parent div</h2>
+      <div class="child-div">
+        <h3>Hi, I am child div</h3>
+        <div class="grandchild-div">
+          <h4>Hi, I am sub-child div</h4>
+        </div>
+      </div>
+    </div>
+
+    <!-- Event delegation example -->
+    <ul class="fruit-list">
+      <li>Apple</li>
+      <li>Banana</li>
+      <li>Mango</li>
+      <li>Strawberry</li>
+    </ul>
+
+    <!-- Main JS script -->
+    <script src="index.js"></script>
+  </body>
 </html>
