@@ -1,0 +1,19 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+
+body {
+  background-color: #141414;
+  color: #dedede;
+}
+.hide {
+  display: none;
+}
