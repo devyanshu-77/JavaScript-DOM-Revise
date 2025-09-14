@@ -1,0 +1,58 @@
+body {
+  background: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: "Helvetica Neue", sans-serif;
+  overflow-y: hidden;
+}
+
+#container {
+  padding: 10px;
+}
+
+#suggestions::before {
+  content: "";
+  display: block;
+  position: absolute;
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 15px solid #374151;
+  top: 0px;
+  left: 8px;
+  transform: translateY(-100%);
+}
+#card {
+  height: 350px;
+  width: 250px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 5px 5px rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+#image-text-container {
+  background-image: url("https://i.pinimg.com/736x/23/48/7e/23487ef1268cfe017047a0640318c0d0.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+/* remove native dropdown/clear/arrow UI completely */
+input[list] {
+  -webkit-appearance: none; /* core reset */
+  -moz-appearance: none;
+  appearance: none;       /* remove default bg/arrow */
+  padding-right: 0.5rem;    /* optional: adjust spacing */
+}
+
+/* Some WebKit builds draw arrow via this pseudo */
+input[list]::-webkit-calendar-picker-indicator {
+  display: none;
+  opacity: 0;
+  -webkit-appearance: none;
+}
+
+/* Some also show a clear 'X' */
+input[list]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  display: none;
+}
