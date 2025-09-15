@@ -12,7 +12,7 @@ let users = [
   {
     name: "isha oberoi",
     pic: "https://i.pinimg.com/736x/23/48/7e/23487ef1268cfe017047a0640318c0d0.jpg",
-    bio: "walking through dreams in doc martens 💭🖤 | late night thinker",
+    bio: "walking through dreams in doc martens 💭🖤",
   },
   {
     name: "Ojin Oklawa",
@@ -36,23 +36,46 @@ let users = [
   },
 ];
 
-const inputBox = document.querySelector("#input-box");
-const dataList = document.querySelector("#mySuggestions");
 const userName = document.querySelector("#user-name");
+const userBio = document.querySelector("#user-bio");
+const bgImage = document.querySelector(".user-card");
+const container = document.querySelector("#card");
+const inputBox = document.querySelector("#input-box");
 
-inputBox.addEventListener("input", (e) => {
-  const value = e.target.value.trim().toLowerCase();
-  dataList.innerHTML = "";
-  if (!value) return;
-  const searchedUsers = users.filter((item) =>
-    item.name.toLowerCase().startsWith(value)
-  );
-  searchedUsers.forEach((user) => {
-    const option = document.createElement("option");
-    option.value = user.name;
-    dataList.appendChild(option);
+function showUsers(arr) {
+  container.innerHTML = "";
+  arr.forEach((user) => {
+    const userCard = document.createElement("div");
+    userCard.classList.add("user-card");
+    userCard.style.backgroundImage = `url(${user.pic})`;
+    const userInfo = document.createElement("div");
+    userInfo.classList.add(
+      "user-info",
+      "flex",
+      "flex-col",
+      "bg-black/30",
+      "backdrop-blur-sm"
+    );
+    const userName = document.createElement("p");
+    userName.classList.add("user-name");
+    userName.textContent = user.name;
+    userInfo.appendChild(userName);
+    const userBio = document.createElement("p");
+    userBio.classList.add("user-bio");
+    userBio.textContent = user.bio;
+    userInfo.appendChild(userBio);
+    userCard.appendChild(userInfo);
+    container.appendChild(userCard);
   });
-  const user = users.filter((u) => u.name === value);
-  console.log(user.name);
-  userName.textContent = user.name;
+}
+showUsers(users);
+
+let timer;
+inputBox.addEventListener("input", (e) => {
+  timer = setTimeout(() => {
+    const serachedUsers = users.filter((user) =>
+      user.name.startsWith(e.target.value)
+    );
+    showUsers(serachedUsers)
+  }, 500);
 });
