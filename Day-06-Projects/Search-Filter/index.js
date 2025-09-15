@@ -72,10 +72,18 @@ showUsers(users);
 
 let timer;
 inputBox.addEventListener("input", (e) => {
+  clearTimeout(timer);
   timer = setTimeout(() => {
     const serachedUsers = users.filter((user) =>
       user.name.startsWith(e.target.value)
     );
-    showUsers(serachedUsers)
+    if (serachedUsers.length <= 0) {
+      const errorCard = document.createElement("div");
+      errorCard.classList.add("no-user");
+      container.innerHTML = "";
+      container.appendChild(errorCard)
+      return;
+    }
+    showUsers(serachedUsers);
   }, 500);
 });

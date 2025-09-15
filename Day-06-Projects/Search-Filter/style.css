@@ -34,6 +34,18 @@ body {
   background-repeat: no-repeat;
   background-position: center center;
 }
+.no-user {
+  display: flex;
+  height: 280px;
+  width: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+  align-items: end;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-image: url("https://img.freepik.com/premium-photo/user-green-uncheck-cross-mark-sign-white-background-3d-render-concept-website-app-icon_492780-1971.jpg?w=1480");
+}
 /* remove native dropdown/clear/arrow UI completely */
 input[list] {
   -webkit-appearance: none; /* core reset */
