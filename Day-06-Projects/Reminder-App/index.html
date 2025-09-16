@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="form" class="p-5">
+      <p style="font-size: 1.3rem; font-weight: 600; margin-bottom: 12px">
+        New Call
+      </p>
+      <div id="input-container">
+        <label for="image">Image Url</label>
+        <input
+          autocomplete="off"
+          id="image"
+          type="text"
+          placeholder="https://example.com/photo.png"
+        />
+        <label for="full-name">Full Name</label>
+        <input
+          autocomplete="off"
+          id="full-name"
+          type="text"
+          placeholder="Enter full name"
+        />
+        <label for="home-town">Home Town</label>
+        <input
+          autocomplete="off"
+          id="home-town"
+          type="text"
+          placeholder="Enter home town"
+        />
+        <label for="purpose">Purpose</label>
+        <input
+          autocomplete="off"
+          id="purpose"
+          type="text"
+          placeholder="e.g Quick appointment note"
+        />
+      </div>
+      <div id="category-container">
+        <p style="margin-top: 12px;">Category</p>
+        <label>
+          <input type="radio" name="category">
+          Emergency
+        </label>
+        <label>
+          <input type="radio" name="category">
+          Important
+        </label>
+        <label>
+          <input type="radio" name="category">
+          Urgent
+        </label>
+        <label>
+          <input type="radio" name="category">
+          No Rush
+        </label>
+      </div>
+      <div id="button-container">
+        <button>Create Note</button>
+        <button>Close</button>
+      </div>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
